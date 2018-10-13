@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--meta:vp tab-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>3D旋转魔法</title>
+    <!-- 重置默认样式-->
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<main>
+    <!--3D魔方-->
+    <section class="cube" id="sjziei-cube">
+        <!--ul>li*6>img tab-->
+        <ul class="cube-box">
+            <li><img src="img/zf_cube1.png" alt=""></li>
+            <li><img src="img/zf_cube2.png" alt=""></li>
+            <li><img src="img/zf_cube3.png" alt=""></li>
+            <li><img src="img/zf_cube4.png" alt=""></li>
+            <li><img src="img/zf_cube5.png" alt=""></li>
+            <li><img src="img/zf_cube6.png" alt=""></li>
+        </ul>
+        <div class="tip"></div>
+    </section>
+
+    <!--swipe-->
+    <section class="swipe" id="sjziei-swiper">
+        <div class="return"></div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!--第一页-->
+                <div class="swiper-slide page1">
+                    <!--dl>dt+dd*11>em{0$}+a[href='#'] TAB键代码自动补全-->
+                    <dl id="sjziei-3d" data-page="1">
+                        <dt>自我介绍</dt>
+                        <dd><em>01</em><a href="#">姓名：周啸天</a></dd>
+                        <dd><em>02</em><a href="#">性别：男</a></dd>
+                        <dd><em>03</em><a href="#">爱好：女</a></dd>
+                        <dd><em>04</em><a href="#">婚否：已婚</a></dd>
+                        <dd><em>05</em><a href="#">年龄：28</a></dd>
+                        <dd><em>06</em><a href="#">职业：程序猿</a></dd>
+                        <dd><em>07</em><a href="#">职位：总监</a></dd>
+                        <dd><em>08</em><a href="#">星座：射手座</a></dd>
+                        <dd><em>09</em><a href="#">身高：180CM</a></dd>
+                        <dd><em>10</em><a href="#">体重：60KG</a></dd>
+                        <dd><em>11</em><a href="#">座右铭：古之欲明明德于天下者，先治其国；欲治其国者，先齐其家；欲齐其家者，先修其身；欲修其身者，先正其心；欲正其心者，先诚其意；欲诚其意者，先致其知，致知在格物。</a></dd>
+                    </dl>
+                </div>
+
+                <!--第二页-->
+                <div class="swiper-slide page2">
+                    <h2>课程体系</h2>
+                    <img src="img/zf_course.png" alt="">
+                    <img src="img/zf_course1.png" alt="">
+                    <img src="img/zf_course2.png" alt="">
+                    <img src="img/zf_course3.png" alt="">
+                    <img src="img/zf_course4.png" alt="">
+                    <img src="img/zf_course5.png" alt="">
+                    <img src="img/zf_course6.png" alt="">
+                </div>
+
+                <!--第三页-->
+                <div class="swiper-slide page3">
+                    <img src="img/zf_style1.jpg" alt="">
+                    <img src="img/zf_style2.jpg" alt="">
+                    <img src="img/zf_style3.jpg" alt="">
+                </div>
+
+                <div class="swiper-slide page4">第四屏</div>
+                <div class="swiper-slide page5">第五屏</div>
+                <div class="swiper-slide page6">第六屏</div>
+            </div>
+        </div>
+    </section>
+
+    <!--音乐播放器-->
+    <section id="sjziei-music">
+        <audio src="audio/music.mp3" loop preload="none" id="musicAudio"  class="music"></audio>
+    </section>
+</main>
+
+<!--REM-->
+<script>
+    ~function () {
+        var winW = document.documentElement.clientWidth;
+        if (winW > 640) return;
+        document.documentElement.style.fontSize = (winW / 640) * 100 + 'px';
+    }();
+</script>
+<!--import js-->
+<script src="js/zhufengpeixun.min.js"></script>
+<script>
+    zhufengpeixun.config({
+        cube: 'sjziei-cube',
+        swipe: 'sjziei-swiper',
+        mak: 'sjziei-3d'
+    });
+
+    var music = document.getElementById('sjziei-music');
+    var musicAudio = document.getElementById('musicAudio');
+    //->当页面加载完成让音频自动播放
+    window.onload = function () {
+        musicAudio.play();//->让音频播放
+        music.className = 'move';//-><section class='move'></section>
+
+        music.onclick = function () {
+            if (musicAudio.paused) {
+                //->当前是暂停的:我们让其播放
+                musicAudio.play();
+                music.className = 'move';
+            } else {
+                //->当前是播放的:我们让其暂停
+                musicAudio.pause();
+                music.className = '';
+            }
+        }
+    };
+</script>
+</body>
+</html>
